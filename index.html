@@ -1,0 +1,803 @@
+<html>
+<head>
+	<title>MOVIE PROJECT</title>
+	<!--Box Icons -->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<style type="text/css">
+		/*Google Fonts*/
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+		*{
+			font-family: 'Poppins', sans-serif;
+			margin: 0;
+			padding: 0;
+			scroll-behavior: smooth;
+			scroll-padding: 2rem;
+			box-sizing: border-box;
+		}
+		/*Variables*/
+		:root{
+			--container-color: #1a1e21;
+			--second-color: #fd8f44;
+			--text-color: #172317;
+			--bg-color: #fff;
+		}
+		::selection{
+			color: var(--bg-color);
+			background: var(--second-color);
+		}
+		a{
+			text-decoration: none;
+		}
+		li{
+			list-style: none;
+		}
+		img{
+			width: 100%;
+		}
+		section{
+			padding: 3rem 0 2rem;
+		}
+		.container{
+			max-width: 1068px;
+			margin: auto;
+			width: 100%;
+		}
+		/*Menu*/
+		nav{
+			position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 250px;
+        }
+        .navigation{
+    position: fixed;
+    left: -500px;
+    width: 350px;
+    height: 100%;
+    background-color: black;
+    transition: 0.5s;
+        z-index: 1;
+    }
+    .navigation ul li{
+    color: linear-gradient(136deg, #58126A, #771D32);
+    text-align: left;
+    text-transform: uppercase;
+    list-style-type: none;
+    font-size: 1.5em;
+    padding: 20px 30px;
+    border-bottom: 1pt solid linear-gradient(136deg, #58126A, #771D32);
+    }
+
+    .hamburger, .bar{
+    position: fixed;
+    }
+
+    .hamburger{
+    display: block;
+    top: 6.5%;
+    left: 5%;
+    width: 30px;
+    height: 30px;
+    transform: translateY(-50%);
+    border: 0;
+    background: 0 0;
+    }
+
+    .bar{
+    top: 3px;
+    background: white;
+    width: 100%;
+    height: 4px;
+    transition: all 0.3s ease-in;
+    }
+
+    #bar2{
+    top: 11px;
+    }
+
+    #bar3{
+    top: 19px;
+    }
+
+    .navigation.active{
+    left: 0;
+    }
+
+    .hamburger.open #bar1{
+    background-color: black;
+    transform: rotate(45deg) translate(6px, 5px);
+    }
+
+    .hamburger.open #bar2{
+    background-color: transparent;
+    }
+
+    .hamburger.open #bar3{
+    background-color: black;
+    transform: rotate(-45deg) translate(6px, -5px);
+    }
+		/*Header*/
+		header{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 200;
+		}
+		header.shadow{
+			background: var(--bg-color);
+			box-shadow: 0 1px 4px hsl(0 4% 14% / 10%);
+			transition: 0.4s;
+		}
+		header.shadow .logo{
+			color: var(--text-color);
+		}
+		.nav{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 18px 0;
+		}
+		.logo{
+			font-size: 1.5rem;
+			font-weight: 600;
+			color: var(--bg-color);
+		}
+		.logo span{
+			color: var(--second-color);
+		}
+		/*Search*/
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			height: 30px;
+			display: flex;
+			cursor: pointer;
+			padding: 10px 20px;
+			background: #fff;
+			border-radius: 30px;
+			align-items: center;
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+		}
+		.box:hover input{
+			width: 400px;
+		}
+		.box input{
+			width: 0;
+			outline: none;
+			border: none;
+			font-weight: 500;
+			transition: 0.8s;
+			background: transparent;
+		}
+		.box a .fas{
+			color: var(--bg-color);
+			font-size: 18px;
+		}
+		/*BMI*/
+		.bmi{
+			padding: 8px 14px;
+			text-transform: uppercase;
+			font-weight: 500;
+			border-radius: 4px;
+			background: var(--second-color);
+			color: var(--bg-color);
+			justify-content: flex-end;
+		}
+		.bmi:hover{
+			background: hsl(24, 98%, 58%);
+			transition: 0.3s;
+		}
+		/*Contact Us*/
+		.contact{
+			padding: 8px 14px;
+			text-transform: uppercase;
+			font-weight: 500;
+			border-radius: 4px;
+			background: var(--second-color);
+			color: var(--bg-color);
+		}
+		.contact:hover{
+			background: hsl(24, 98%, 58%);
+			transition: 0.3s;
+		}
+		/*Subscribe*/
+		.subscribe{
+			padding: 8px 14px;
+			text-transform: uppercase;
+			font-weight: 500;
+			border-radius: 4px;
+			background: var(--second-color);
+			color: var(--bg-color);
+		}
+		.subscribe:hover{
+			background: hsl(24, 98%, 58%);
+			transition: 0.3s;
+		}
+		/*Home*/
+		.home{
+			width: 100%;
+			min-height: 440px;
+			background: #fff;
+			background-image: url(movie.jpg);
+			display: grid;
+			justify-content: center;
+			align-items: center;
+		}
+		.home-text{
+			color: var(--bg-color);
+			text-align: center;
+		}
+		.home-title{
+			font-size: 3.5rem;
+		}
+		.home-subtitle{
+			font-size: 1rem;
+			font-weight: 400;
+		}
+		.about{
+			position: relative;
+			width: 100%;
+			display: flex !important;
+			justify-content: left;
+			align-items: left;
+		}
+		.about .contentBx{
+			max-width: 50%;
+			width: 50%;
+			text-align: left;
+			padding-right: 40px;
+		}
+		.titleText{
+			font-weight: 600;
+			color: #111;
+			font-size: 1.5rem;
+			margin-bottom: 5px;
+		}
+		.title-text{
+			color: #111;
+			font-size: 1em;
+		}
+    .titleTex{
+			font-weight: 600;
+			color: #111;
+			font-size: 1rem;
+			margin-bottom: 5px;
+		}
+		.about .imgBx{
+			position: relative;
+			min-width: 50%;
+			width: 50%;
+			min-height: 500px;
+		}
+		.btn2{
+			position: relative;
+			display: inline-block;
+			margin-top: 30px;
+			padding: 10px 30px;
+			background: #fff;
+			border: 1px solid #111;
+			color: #333;
+			text-decoration: none;
+			transition: 0.5s;
+		}
+		.btn2:hover{
+			background-color: var(--second-color);
+			border: none;
+			color: #fff;
+		}
+
+		/*Post Filter*/
+		.post-filter{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			column-gap: 1.5rem;
+			margin-top: 2rem !important;
+		}
+		.filter-item{
+			font-size: 0.9rem;
+			font-weight: 500;
+			cursor: pointer;
+		}
+		.active-filter{
+			background: var(--second-color);
+			color: var(--bg-color);
+			padding: 4px 10px;
+			border-radius: 4px;
+		}
+		/*Posts*/
+		.post{
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px,auto));
+			justify-content: center;
+			gap: 1.5rem;
+		}
+		.post-box{
+			background: var(--bg-color);
+			box-shadow: 0 4px 14px hsl(355deg 25% 15% / 10%);
+			padding: 15px;
+			border-radius: 0.5rem;
+		}
+		.post-img{
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+			object-position: center;
+			border-radius: 0.5rem;
+		}
+		.category{
+			font-size: 0.9rem;
+			font-weight: 500;
+			text-transform: uppercase;
+			color: var(--second-color);
+		}
+		.post-title{
+			font-size: 1.3rem;
+			font-weight: 600;
+			color: var(--text-color);
+			/*To Remain Title In 2 Lines*/
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+		.post-date{
+			display: flex;
+			font-size: 0.875rem;
+			text-transform: uppercase;
+			font-weight: 400;
+			margin-top: 4px;
+		}
+		.post-decription{
+			font-size: 0.9rem;
+			line-height: 1.5rem;
+			margin: 5px 0 10px;
+			/*To Remain Title In 3 Lines*/
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+		.profile{
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		.profile-img{
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			object-fit: cover;
+			object-position: center;
+			border: 2px solid var(--second-color);
+		}
+		.profile-name{
+			font-size: 0.82rem;
+			font-weight: 500;
+		}
+		.footer{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 30px 0;
+		}
+		.footer p{
+			font-size: 0.938rem;
+		}
+		.social{
+			display: flex;
+			align-items: center;
+			column-gap: 1rem;
+		}
+		.social .bx{
+			font-size: 1.4rem;
+			color: var(--text-color);
+		}
+		.social .bx:hover{
+			color: var(--second-color);
+			transition: 0.3s all linear;
+		}
+		#fh5co-footer {
+			background: #efefef;
+		}
+		#fh5co-footer .fh5co-footer-links {
+			padding: 0;
+			margin: 0;
+		}
+		@media screen and (max-width: 768px) {
+			#fh5co-footer .fh5co-footer-links {
+				margin-bottom: 30px;
+			}
+		}
+		#fh5co-footer .fh5co-footer-links li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+        #fh5co-footer .fh5co-footer-links li a {
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+}
+        #fh5co-footer .fh5co-footer-links li a:hover {
+  text-decoration: underline;
+}
+        #fh5co-footer .fh5co-widget {
+  margin-bottom: 30px;
+}
+        @media screen and (max-width: 768px) {
+        #fh5co-footer .fh5co-widget {
+    text-align: left;
+  }
+}
+        #fh5co-footer .fh5co-widget h3 {
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+.checked {
+  color: orange;
+}
+.btnn {
+  font-family: "Sentinel A","Sentinel B",Georgia,serif; 
+  text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+  background: #fd8f44;
+  color: #FFF;
+  padding: 6px 20px 7px; 
+  font-size: 18px;
+  line-height: 23px;
+  min-width: 50px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle; 
+  border: 1px solid 4383c5;
+  cursor: pointer;
+  font-weight: 600px; 
+  transition: opacity 0.1s ease-out,background 0.1s ease-out;
+  -webkit-border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.3),0 1px 3px rgba(0,0,0,0.4);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3),0 1px 3px rgba(0,0,0,0.4);
+  -webkit-transition: opacity 0.1s ease-out,background 0.1s ease-out;
+}
+
+
+.btnn:hover
+{
+  background-color:black; 
+}
+	</style>
+</head>
+<body>
+
+	<!--Header-->
+	<header>
+		<!--menu bar-->
+		<div class="navigation">
+             <button class="hamburger" onclick="show()">
+                 <div id="bar1" class="bar"></div>
+                 <div id="bar2" class="bar"></div>
+                 <div id="bar3" class="bar"></div>
+             </button>
+             <nav>
+                 <ul>
+                     <li><a href="api.html">SEARCH</a></li>
+                     <li><a href="index.html">HOME</a></li>
+					 <li><a href="api2.html">MOVIES</a></li>
+                     <li><a href="api3.html">RECOMMENDATIONS</a></li>
+                     <li><a href="api4.html">WATCHLIST</a></li>
+                 </ul>
+             </nav>
+        </div>
+		<!--Nav-->
+		<div class="nav container">
+
+		<!--Logo-->
+		<a href="#" class="logo">THE<span>MoViEs</span></a>
+        
+        <!--Search-->
+		<div class="box">
+			<div class="search-box">
+				<input type="text" placeholder="Click icon to search movie">
+					<a href="api.html" class="fas fa-search"></i>
+			</div>
+		</div>
+
+		<!-- Home-->
+		<a href="index.html" class="bmi">HOME</a>
+
+		<!-- Movies-->
+		<a href="api2.html" class="contact">MOVIES</a>
+
+		<!-- Recommendation-->
+		<a href="api3.html" class="contact">RECOMMENDATIONS</a>
+
+		<!-- Subscribe-->
+		<a href="api4.html" class="subscribe">WATCHLIST</a>
+	</div>
+	</header>
+
+	<!--Home-->
+	<section class="home" id="home">
+<div class="slideshow-container"></div>
+<br>
+	</section>
+
+	<!--Posts-->
+	<section class="post container">
+		<!--Post Box 1-->
+		<div class="post-box Fitness">
+      <h2 class="titleText">Trendings</h2>
+			<img src="i1.jpg" alt="" class="post-img">
+			<h2 class="category">Action, Adventure</h2>
+			<a href="api2.html" class="post-title">
+				Indiana Jones and the Dial of Destiny
+			</a>
+			<span class="post-date">2023 - PG-13 - 2h 34m</span>
+      <span class="fa fa-star checked">      6.9</span>
+			<p class="post-decription">Archaeologist Indiana Jones races against time to retrieve a legendary artifact that can change the course of history.</p>
+      <a href="api4.html" class="btnn"><span>+ Add to WatchList</span></a>
+		</div>
+
+		<!--Post Box 2-->
+		<div class="post-box Fitness">
+      <br><br>
+			<img src="i2.jpg" alt="" class="post-img">
+			<h2 class="category">Action, Adventure, Drama</h2>
+			<a href="api2.html" class="post-title">
+				The Witcher
+			</a>
+			<span class="post-date">TV Series - 2019 - TV-MA - 1h</span>
+      <span class="fa fa-star checked">      8.1</span>
+			<p class="post-decription">Geralt of Rivia, a solitary monster hunter, struggles to find his place in a world where people often prove more wicked than beasts.</p>
+      <a href="api4.html" class="btnn"><span>+ Add to WatchList</span></a>
+		</div>
+
+		<!--Post Box 3-->
+		<div class="post-box Fitness">
+      <br><br>
+			<img src="i3.jpg" alt="" class="post-img">
+			<h2 class="category">Action, Animation, Adventure</h2>
+			<a href="api2.html" class="post-title">
+				Spider-Man: Across the Spider-Verse
+			</a>
+			<span class="post-date">2023 - PG - 2h 20m</span>
+      <span class="fa fa-star checked">      8.9</span>
+			<p class="post-decription">Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero.</p>
+      <a href="api4.html" class="btnn"><span>+ Add to WatchList</span></a>
+		</div>
+
+		<!--Post Box 4-->
+		<div class="post-box Nutrition">
+      <br><br>
+			<img src="i4.jpg" alt="" class="post-img">
+			<h2 class="category">Adventure, Comedy, Fantasy</h2>
+			<a href="api2.html" class="post-title">
+				Barbie
+			</a>
+			<span class="post-date">2023 - PG-13 - 1h 54m</span>
+      <span class="fa fa-star">      No ratings</span>
+			<p class="post-decription">Barbie suffers a crisis that leads her to question her world and her existence.</p>
+      <a href="api4.html" class="btnn"><span>+ Add to WatchList</span></a>
+		</div>
+
+		<!--Post Box 5-->
+		<div class="post-box Nutrition">
+      <br><br>
+			<img src="i5.jpg" alt="" class="post-img">
+			<h2 class="category">Romance, Drama</h2>
+			<a href="api2.html" class="post-title">
+				Titanic
+			</a>
+			<span class="post-date">1997 - PG-13 - 3h 14m</span>
+      <span class="fa fa-star checked">      7.9</span>
+			<p class="post-decription">A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.</p>
+      <a href="api4.html" class="btnn"><span>+ Add to WatchList</span></a>
+		</div>
+
+		<!--Post Box 6-->
+		<div class="post-box Nutrition">
+      <br><br>
+			<img src="i6.jpg" alt="" class="post-img">
+			<h2 class="category">Adventure, Family, Fantasy</h2>
+			<a href="api2.html" class="post-title">
+				The Little Mermaid
+			</a>
+			<span class="post-date">2023 - PG - 2h 15m</span>
+      <span class="fa fa-star checked">      7.2</span>
+			<p class="post-decription">A young mermaid makes a deal with a sea witch to trade her beautiful voice for human legs so she can discover the world above water and impress a prince.</p>
+      <a href="api4.html" class="btnn"><span>+ Add to WatchList</span></a>
+		</div>
+
+		<!--Post Box 7-->
+		<div class="post-box Journey">
+      <br><br>
+			<img src="i7.jpg" alt="" class="post-img">
+			<h2 class="category">Horror, Drama, Thriller</h2>
+			<a href="api2.html" class="post-title">
+				The Walking Dead
+			</a>
+			<span class="post-date">TV Series - 2010–2022 - TV-MA - 44m</span>
+      <span class="fa fa-star checked">      8.1</span>
+			<p class="post-decription">Sheriff Deputy Rick Grimes wakes up from a coma to learn the world is in ruins and must lead a group of survivors to stay alive.</p>
+      <a href="api4.html" class="btnn"><span>+ Add to WatchList</span></a>
+		</div>
+
+		<!--Post Box 8-->
+		<div class="post-box Journey">
+      <br><br>
+			<img src="i8.jpg" alt="" class="post-img">
+			<h2 class="category">Horror, Mystery, Thriller</h2>
+			<a href="api2.html" class="post-title">
+				Insidious: The Red Door
+			</a>
+			<span class="post-date">2023 - PG-13 - 1h 47m</span>
+      <span class="fa fa-star checked">      6.0</span>
+			<p class="post-decription">The Lamberts must go deeper into The Further than ever before to put their demons to rest once and for all.</p>
+      <a href="api4.html" class="btnn"><span>+ Add to WatchList</span></a>
+		</div>
+
+		<!--Post Box 9-->
+		<div class="post-box Journey">
+      <br><br>
+			<img src="i9.jpg" alt="" class="post-img">
+			<h2 class="category">Horror</h2>
+			<a href="api2.html" class="post-title">
+				Evil Dead Rise
+			</a>
+			<span class="post-date">2023 - R - 1h 36m</span>
+      <span class="fa fa-star checked">      6.6</span>
+			<p class="post-decription">A twisted tale of two estranged sisters whose reunion is cut short by the rise of flesh-possessing demons, thrusting them into a primal battle for survival as they face the most nightmarish version of family imaginable.</p>
+      <a href="api4.html" class="btnn"><span>+ Add to WatchList</span></a>
+		</div>
+	</section>
+
+    
+    <!--JQuery Link-->
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
+    <!--Link To JS-->
+    <script type="text/javascript">
+    	// Filter Js
+    	$(document).ready(function(){
+    		$(".filter-item").click(function() {
+    			const value = $(this).attr("data-filter");
+    			if (value == "all") {
+    				$(".post-box").show("1000");
+    			} else{
+    				$(".post-box") 
+    				    .not("." + value)
+    				    .hide("1000");
+    				$(".post-box") 
+    				    .filter("." + value)
+    				    .show('1000');
+    			}
+    		});
+    		// Add active to btn
+    		$('.filter-item').click(function(){
+    			$(this).addClass("active-filter").siblings().removeClass("active-filter");
+    		});
+    	});
+
+    	function show(){
+    		document.querySelector(".hamburger").classList.toggle('open');
+    		document.querySelector(".navigation").classList.toggle('active');
+    	};
+
+
+    	    //Header Background Change On Scroll
+    	    let header = document.querySelector('header')
+    	    window.addeventListener('scroll', () => {
+    		header.classList.toggle('shadow', window.scrollY >0);
+    	});
+
+    	    // get the element that the user will hover over
+    	    let skip = document.getElementById("skip");
+
+    	    // add a mouseover event listener to the element
+    	    skip.addEventListener("mouseover", function() {
+    	    	window.alert("Hi and welcome to my blog!");
+    	    });
+
+        
+
+    </script>
+
+</body>
+</html>
