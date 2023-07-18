@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Movie WatchList</title>
+  <!-- Box Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  <style type="text/css">
+    /*Google Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+SC:wght@100;200;300;400;700&display=swap');
+body{
+    font-family: 'Ysabeau SC', sans-serif;
+    background: rgba(0, 0, 0, 0.6);
+    background-blend-mode: darken ;
+}
+h2{
+    color: ghostwhite;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid ;
+}
+th {
+    background-color: black;
+    color: #fd8f44;
+}
+
+.searchbar{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 15px 30px;
+    border-radius: 20px;
+}
+
+.searchbar button{
+    height: fit-content;
+    background-color: #fd8f44;
+    color: black;
+    padding: 10px 10px;
+}
+
+.searchbar input{
+    background-color: white;
+    padding: 10px 10px;
+    width: 70vh;
+}
+button{
+    height: fit-content;
+    background-color:#fd8f44;
+    color: black;
+    padding: 10px 10px;
+}
+.movie-poster {
+    max-width: 100%;
+    max-height: 150px; /* Adjust the maximum height as needed */
+    object-fit: contain;
+  }
+
+  </style>
+</head>
+  <body>
+    <div class="searchbar">
+      <input type="text" id="searchInput" placeholder="Enter a movie title" />
+      <button id="searchButton" onclick="movieSearch()">Search</button>
+    </div>
+    <h2>Search Results</h2>
+    <table id="resultsTable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Year</th>
+          <th>Movie ID</th>
+          <th> Add to Wishlist :</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="resultsBody" style="color:white; text-decoration: none;"></tbody>
+    </table>
+    <div id="watchlistContainer">
+      <h2>My Watchlist</h2>
+      <table id="watchlistTable">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Movie ID</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="watchlistBody" style="color:white; text-decoration: none;"></tbody>
+      </table>
+    </div>
+    <button onclick="goToHome()">Back to Home</button>
+    <script src="main.js"></script>
+  </body>
+</html>
